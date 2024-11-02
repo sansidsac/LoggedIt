@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: #d9dcd6;
+/* Hide the overall page scrollbar */
+body {
+  overflow: hidden;
+  background-color: #d9dcd6;
+}
+
+/* Custom scrollbar for LeftSideComp */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #d9dcd6; /* Background color of the scrollbar track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3a7ca5; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+  border: 2px solid #d9dcd6; /* Border around the scrollbar thumb */
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #3a7ca5 #d9dcd6;
 }

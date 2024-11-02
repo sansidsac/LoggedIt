@@ -3,7 +3,7 @@ import LogEntryForm from './LogEntryForm'
 
 const RightSideComp = () => {
   return (
-    <div>
+    <div className='border-l-2 border-l-[#b0b3af] mt-12 fixed'>
         <LogEntryForm/>
     </div>
   )

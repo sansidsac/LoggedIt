@@ -2,11 +2,11 @@ import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div className="flex items-center w-5/6 p-8 bg-[#d9dcd6] rounded-full">
+    <div className="flex items-center w-11/12 m-8 bg-[#d9dcd6] border-2 border-[#b0b3af] rounded-full">
       <input 
         type="text" 
         placeholder="Search..." 
-        className="flex-grow p-2 rounded-l-full border-none focus:outline-none"
+        className="flex-grow p-2 rounded-l-full border-none focus:outline-none text-white bg-[#d9dcd6]"
       />
       <a href="#" className="bg-[#3a7ca5] hover:bg-[#16425b] p-2 rounded-r-full text-white">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

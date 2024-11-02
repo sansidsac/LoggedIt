@@ -8,10 +8,12 @@ const App = () => {
   return (
     <>
       <NavBar/>
-      <SplitScreen leftWidth={1} rightWidth={3}>
-        <LeftSideComp/>
-        <RightSideComp/>
-      </SplitScreen>
+      <div className='mt-10'>
+        <SplitScreen leftWidth={1} rightWidth={3}>
+          <LeftSideComp/>
+          <RightSideComp/>
+        </SplitScreen>
+      </div>
     </>
   )
 }

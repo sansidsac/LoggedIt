@@ -14,10 +14,10 @@ const SplitScreen = ({ children }) => {
 
   return (
     <Container>
-      <Panel flex={3}>
+      <Panel flex={5}>
         {left}
       </Panel>
-      <Panel flex={2}>
+      <Panel flex={3}>
         {right}
       </Panel>
     </Container>
