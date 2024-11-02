@@ -13,9 +13,9 @@ const NavBar = () => {
           </a>
         </div>
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">Home</a>
-          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">About</a>
-          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">Contact</a>
+          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">History</a>
+          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">Insights</a>
+          <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">Edits</a>
           <a href="#" className="text-[#16425b] hover:text-[#3a7ca5]">
             <img src="../public/profile.jpg" alt="Profile" className="h-8 w-8 rounded-full"/>
           </a>

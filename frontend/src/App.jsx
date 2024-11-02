@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import SplitScreen from './components/SplitScreen'
 import LeftSideComp from './components/LeftSideComp'
 import RightSideComp from './components/RightSideComp'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
           <RightSideComp/>
         </SplitScreen>
       </div>
+      {/* <div className='mt-10'>
+        <Footer/>
+      </div> */}
     </>
   )
 }
