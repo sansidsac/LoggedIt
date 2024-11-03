@@ -6,6 +6,7 @@ import RightSideComp from './components/RightSideComp'
 // import Dictaphone from './components/Dictaphone';
 import NativeDictaphone from './components/NativeDictaphone'
 
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
           <RightSideComp/>
         </SplitScreen>
       </div>
+      {/* <div className='mt-10'>
+        <Footer/>
+      </div> */}
     </>
   )
 }
