@@ -10,7 +10,7 @@ const SearchBar = () => {
   const isInputFilled = inputValue.trim() !== '';
 
   return (
-    <div className="flex items-center w-11/12 m-8 bg-[#d9dcd6] rounded-full border-2 border-[#b0b3af]">
+    <div className="flex mt-24 items-center w-11/12 m-8 bg-[#d9dcd6] rounded-full border-2 border-[#b0b3af]">
       <input 
         type="text" 
         placeholder="Search..." 

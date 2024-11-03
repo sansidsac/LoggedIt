@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const LogEntryForm = () => {
   const [inputValue, setInputValue] = useState('');
@@ -19,9 +20,30 @@ const LogEntryForm = () => {
 
   const isFormFilled = inputValue.trim() !== '' && textareaValue.trim() !== '';
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const logData = {
+      heading: inputValue,
+      description: textareaValue,
+      name: 'Jon Smith',
+      designation: 'System Engineer',
+      department: 'IT',
+      datetime: new Date().toISOString()
+    };
+
+    try {
+      const response = await axios.post('http://localhost:5000/logs', logData);
+      console.log('Log entry added:', response.data);
+      setInputValue('');
+      setTextareaValue('');
+    } catch (error) {
+      console.error('Error adding log entry:', error);
+    }
+  };
+
   return (
     <div className="p-4 bg-[#d9dcd6] rounded-lg">
-      <form className="space-y-4">
+      <form className="space-y-1" onSubmit={handleSubmit}>
         <div>
           {/* <label className="block text-[#16425b] text-sm font-bold mb-2" htmlFor="heading">
             Heading
@@ -31,6 +53,7 @@ const LogEntryForm = () => {
             id="heading" 
             placeholder="Enter Heading" 
             className="w-full p-2 rounded border font-bold text-3xl bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
+            value={inputValue}
             onChange={handleInputChange}
           />
         </div>
@@ -42,6 +65,7 @@ const LogEntryForm = () => {
             id="log" 
             placeholder="Enter Log" 
             className="w-full h-96 p-2 rounded border font-semibold text-lg bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
+            value={textareaValue}
             onChange={handleTextareaChange}
           />
         </div>

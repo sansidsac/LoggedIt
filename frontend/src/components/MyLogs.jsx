@@ -1,33 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import MyLogCard from './MyLogCard'
 
 const MyLogs = () => {
-  const logs = [
-    {
-      header: 'System Update',
-      date: '2023-10-01',
-      time: '10:00 AM',
-      description: 'Performed a system update on all servers.'
-    },
-    {
-      header: 'Network Maintenance',
-      date: '2023-10-02',
-      time: '11:00 AM',
-      description: 'Conducted routine network maintenance and updates.'
-    },
-    {
-      header: 'Database Backup',
-      date: '2023-10-03',
-      time: '12:00 PM',
-      description: 'Completed a full backup of the company database.'
-    },
-    {
-      header: 'Security Audit',
-      date: '2023-10-04',
-      time: '01:00 PM',
-      description: 'Conducted a security audit and identified vulnerabilities.'
-    }
-  ];
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/logs');
+        const filteredLogs = response.data.filter(log => log.name === 'Jon Smith');
+        setLogs(filteredLogs);
+      } catch (error) {
+        console.error('Error fetching logs:', error);
+      }
+    };
+
+    fetchLogs();
+  }, []);
 
   return (
     <div className="p-4">
@@ -36,9 +26,9 @@ const MyLogs = () => {
         {logs.map((log, index) => (
           <MyLogCard
             key={index}
-            header={log.header}
-            date={log.date}
-            time={log.time}
+            header={log.heading}
+            date={new Date(log.datetime).toLocaleDateString()}
+            time={new Date(log.datetime).toLocaleTimeString()}
             description={log.description}
           />
         ))}
