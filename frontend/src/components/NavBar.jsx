@@ -6,10 +6,10 @@ const NavBar = () => {
     <nav className="bg-[#d9dcd6] p-4 shadow-md shadow-[#b0b3af] fixed top-0 left-0 right-0 z-10">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center">
-          <Link href="#" className="text-[#16425b] text-lg font-bold mr-4">
+          <Link to="/" className="text-[#16425b] text-lg font-bold mr-4">
             <img src="../public/mobile-logo.png" alt="Logo" className="h-8 w-8"/>
           </Link>
-          <Link href="#" className="text-[#16425b] text-lg font-bold">
+          <Link to="/" className="text-[#16425b] text-lg font-bold">
             LoggedIT
           </Link>
         </div>
