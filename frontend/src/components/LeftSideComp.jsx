@@ -5,7 +5,7 @@ import AllLogs from './AllLogs'
 
 const LeftSideComp = () => {
   return (
-    <div className="mt-6 overflow-y-auto h-screen custom-scrollbar">
+    <div className="overflow-y-auto h-screen custom-scrollbar">
       <div className="flex justify-center">
         <SearchBar />
       </div>
