@@ -1,4 +1,3 @@
-const Groq = require("groq-sdk");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 async function getOpenAIResponse(text, heading) {

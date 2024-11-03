@@ -22,6 +22,7 @@ const LogEntryForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const logData = {
       heading: inputValue,
       description: textareaValue,
