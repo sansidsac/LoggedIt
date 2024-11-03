@@ -32,7 +32,7 @@ const LogEntryForm = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/logs', logData);
+      const response = await axios.post('http://localhost:5000/input', logData);
       console.log('Log entry added:', response.data);
       setInputValue('');
       setTextareaValue('');

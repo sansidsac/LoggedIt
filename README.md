@@ -15,3 +15,14 @@ In many industrial and manufacturing environments, workers and managers face ext
 ### Differentiator
 
 Unlike typical logging tools, this system not only automates the documentation process but actively uses historical data to drive decisions and recommend improvements. By automating log creation and turning it into a knowledge base, it becomes a dynamic resource that grows over time, eliminating passive record-keeping.
+
+### How To Run
+
+1. Clone the repository.
+2. Install the required packages by running `npm i` in both backend and frontend directories.
+3. Start the backend server by going to backend directory
+   `cd ./backend`
+   run server using command `node server.js` in the backend directory.
+4. Start the frontend server by going to frontend directory
+   `cd ./frontend`
+   run server using command `npm run dev` in the frontend directory.
