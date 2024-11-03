@@ -87,6 +87,10 @@ Pattern Recognition and Reporting
 
 The system continuously analyzes logs to identify patterns, common issues, or recurrent problems.
 Regular reports or alerts on identified patterns are sent to the management team, allowing them to address systemic issues proactively.
+
+## 📹Prototype Demo
+https://drive.google.com/drive/folders/1xyEQZyARpB5IllfdETlLaGh3dneFVPXb?usp=drive_link
+
 ### How To Run
 
 1. Clone the repository.
