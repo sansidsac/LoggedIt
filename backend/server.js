@@ -34,14 +34,14 @@ app.post("/input", async (req, res) => {
   formattedData.datetime = datetime;
   process.stdout.write(formattedData);
 
-  // const newLog = new Loggedit({ formattedData });
+  const newLog = new Loggedit({ formattedData });
 
-  // newLog
-  //   .save()
-  //   .then(() => res.status(201).json({ message: "Log saved successfully" }))
-  //   .catch((err) =>
-  //     res.status(500).json({ message: "Error saving log", error: err })
-  //   );
+  newLog
+    .save()
+    .then(() => res.status(201).json({ message: "Log saved successfully" }))
+    .catch((err) =>
+      res.status(500).json({ message: "Error saving log", error: err })
+    );
 });
 
 app.use('/logs', logRoute);

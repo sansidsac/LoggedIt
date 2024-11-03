@@ -20,9 +20,13 @@ Unlike typical logging tools, this system not only automates the documentation p
 
 1. Clone the repository.
 2. Install the required packages by running `npm i` in both backend and frontend directories.
-3. Start the backend server by going to backend directory
+3. Add your google ai studio api key and mongo db connection string into .env file in backend directory
+   MONGO_URI=<connection_string>
+   PORT=5000
+   API_KEY=<Your_API_KEY>
+4. Start the backend server by going to backend directory
    `cd ./backend`
    run server using command `node server.js` in the backend directory.
-4. Start the frontend server by going to frontend directory
+5. Start the frontend server by going to frontend directory
    `cd ./frontend`
    run server using command `npm run dev` in the frontend directory.
