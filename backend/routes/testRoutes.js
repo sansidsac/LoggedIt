@@ -4,13 +4,33 @@ const router = express.Router();
 
 // Create a new log entry
 router.post('/', async (req, res) => {
-    const newLog = new Loggedit(req.body);
-    try {
-      const savedLog = await newLog.save();
-      res.status(201).json(savedLog);
-    } catch (error) {
-      res.status(400).json({ message: "Error adding log entry", error });
+    const { heading, description, name, designation, department, datetime } =
+      req.body;
+  
+    if (!heading || !description) {
+      return res.status(400).json({ message: "Heading and text are required" });
     }
+  
+    const formattedData = await getOpenAiResponse(heading, description);
+    // process.stdout.write(typeof formattedData);
+    if (formattedData && typeof formattedData === "object") {
+      formattedData.name = name;
+      formattedData.designation = designation;
+      formattedData.department = department;
+      formattedData.datetime = datetime;
+    } else {
+      return res.status(500).json({ message: "Error formatting data" });
+    }
+    // process.stdout.write(JSON.stringify(formattedData));
+  
+    const newLog = new Loggedit({ formattedData });
+  
+    newLog
+      .save()
+      .then(() => res.status(201).json({ message: "Log saved successfully" }))
+      .catch((err) =>
+        res.status(500).json({ message: "Error saving log", error: err })
+      );
   });
   
   // Get all log entries

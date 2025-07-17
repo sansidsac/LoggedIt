@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
-const logRoute = require('./logRoute');
+const logRoute = require("./logRoute");
 
 const getOpenAiResponse = require("./parseInput.js");
 
@@ -11,7 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {})
+mongoose
+  .connect(process.env.MONGO_URI, {})
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("MongoDB connection error: ", err));
 
@@ -21,18 +22,24 @@ const Loggedit = require("./logModel.js");
 
 // Sample route
 app.post("/input", async (req, res) => {
-  const { heading,description, name, designation, department, datetime } = req.body;
+  const { heading, description, name, designation, department, datetime } =
+    req.body;
 
   if (!heading || !description) {
     return res.status(400).json({ message: "Heading and text are required" });
   }
 
   const formattedData = await getOpenAiResponse(heading, description);
-  formattedData.name = name;
-  formattedData.designation = designation;
-  formattedData.department = department;
-  formattedData.datetime = datetime;
-  process.stdout.write(formattedData);
+  // process.stdout.write(typeof formattedData);
+  if (formattedData && typeof formattedData === "object") {
+    formattedData.name = name;
+    formattedData.designation = designation;
+    formattedData.department = department;
+    formattedData.datetime = datetime;
+  } else {
+    return res.status(500).json({ message: "Error formatting data" });
+  }
+  // process.stdout.write(JSON.stringify(formattedData));
 
   const newLog = new Loggedit({ formattedData });
 
@@ -44,7 +51,7 @@ app.post("/input", async (req, res) => {
     );
 });
 
-app.use('/logs', logRoute);
+app.use("/logs", logRoute);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

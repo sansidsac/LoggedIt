@@ -47,8 +47,16 @@ async function getOpenAIResponse(text, heading) {
   const genAI = new GoogleGenerativeAI(process.env.API_KEY);
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-  const result = await model.generateContent(prompt);
-  return result.response.text();
+  const result = await model.generateContent(
+    prompt,
+    (generation_config = {
+      response_mime_type: "application/json",
+    })
+  );
+  const str = result.response.text();
+  newStr = str.slice(4, -3);
+  // process.stdout.write(newStr);
+  return JSON.parse(newStr);
 
   // const groq = new Groq();
 

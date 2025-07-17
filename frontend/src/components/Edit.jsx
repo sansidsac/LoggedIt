@@ -30,7 +30,7 @@ const Edit = () => {
           name="heading"
           value={log.heading}
           onChange={handleInputChange}
-          className="w-full p-2 rounded border font-bold text-3xl bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
+          className="w-full p-2 h-24 rounded border font-bold text-3xl bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
         />
       </div>
 
@@ -43,7 +43,7 @@ const Edit = () => {
           name="description"
           value={log.description}
           onChange={handleInputChange}
-          className="w-full h-96 p-2 rounded border font-semibold text-lg bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
+          className="w-full h-44 p-2 rounded border font-semibold text-lg bg-[#d9dcd6] border-[#d9dcd6] focus:outline-none focus:ring-2 focus:ring-[#d9dcd6]"
         />
       </div>
 
