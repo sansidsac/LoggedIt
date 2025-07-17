@@ -2,11 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 async function getOpenAIResponse(text, heading) {
   const additionalPrompt = `Extract the following structured data from the provided text input, and format it as a JSON object:
-    - timestamp: the date and time of the activity (in ISO format).
     - activityType: the type of activity (e.g., machine_maintenance, quality_check, production_report, safety_incident).
-    - user: an object containing:
-      - userId: the unique identifier for the user (e.g., u12345).
-      - username: the name of the person who performed the activity (e.g., JohnDoe).
     - machineId: the identifier of the machine involved (if applicable).
     - location: the location where the activity took place.
     - activityDetails: a nested object that contains details specific to the activity type, including:
@@ -23,12 +19,7 @@ async function getOpenAIResponse(text, heading) {
     
     Convert this into the following JSON format:
     {
-      "timestamp": "2024-11-02T00:00:00Z",
       "activityType": "machine_maintenance",
-      "user": {
-        "userId": "u12345",
-        "username": "JaneDoe"
-      },
       "machineId": "MACHINE_23",
       "location": "Factory 1 - Assembly Line 3",
       "activityDetails": {
@@ -44,19 +35,28 @@ async function getOpenAIResponse(text, heading) {
         "tags": ["maintenance", "repair", "machine_23"]
       }
     }
+    do not include explanations for anything.
+    simply send the JSON object as the response.
     
     Now, apply this format to the following text input:
     `;
 
   const prompt = additionalPrompt + `${heading}\n\n${text}`;
   // Make sure to include these imports:
-// import { GoogleGenerativeAI } from "@google/generative-ai";
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  // import { GoogleGenerativeAI } from "@google/generative-ai";
+  const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-
-const result = await model.generateContent(prompt);
-return JSON.parse(result.response.text());
+  const result = await model.generateContent(
+    prompt,
+    (generation_config = {
+      response_mime_type: "application/json",
+    })
+  );
+  const str = result.response.text();
+  newStr = str.slice(4, -3);
+  // process.stdout.write(newStr);
+  return JSON.parse(newStr);
 
   // const groq = new Groq();
 
